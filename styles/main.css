@@ -1,6 +1,15 @@
+html {
+  background: url(../images/raster.png) repeat;
+}
+
 body {
     color: #333;
     font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
+    background: white;
+}
+
+body.index, body.page {
+    padding-bottom: 50px;
 }
 
 a {
@@ -29,10 +38,58 @@ h2 {
     padding-top: 5em;
     text-align: center;
     background: black; /* #2c3e50; */
+    box-shadow: 0 0 5px black;
+}
+
+.sidebar .previous {
+  display: block;
+  height: 100px;
+  margin-top: -5em;
+  background: url(../images/back.png) no-repeat 50% 50%;
+}
+
+.sidebar .current {
+  display: block;
+  transform: rotate(270deg);
+  font-weight: bold;
+  font-size: 3em;
+  color: #333;
+  margin: 50px 0px;
+  line-height: 1.5em;
 }
 
 #content {
     padding: 2em 3em 0;
+}
+
+body.index #content {
+    padding: 2em 0 0;
+}
+body.index #content .header {
+  padding: 0 3em;
+}
+body.index .post, body.page .header .post {
+    background: #efefef;
+    color: gray;
+}
+body.index .section {
+  padding: 0 3em;
+  font-size: 2em;
+  line-height: 2em;
+  display: block;
+  text-transform: capitalize;
+}
+body.index a.section:hover {
+  color: white;
+}
+body.index .index {
+  background: #6d9f6d url(../images/section-index.png) no-repeat 25px 50%;
+}
+body.index .gallery {
+  background: #ff4d4d url(../images/section-gallery.png) no-repeat 25px 50%;
+}
+body.index .page {
+  background: #6d9dff url(../images/section-page.png) no-repeat 25px 50%;
 }
 
 .pure-menu-custom ul {
@@ -44,15 +101,6 @@ h2 {
     border: none;
 }
 
-.pure-menu-custom li a:hover,.pure-menu-custom li a:focus, a:hover, a:focus {
-    background: none;
-    color: #1abc9c;
-	-webkit-transition: all 0.4s linear;
-	-moz-transition: all 0.4s linear;
-	-o-transition: all 0.4s linear;
-	transition: all 0.4s linear;    
-}
-
 .pure-menu-custom a, .pure-menu-custom .pure-menu-can-have-children>li:after {
     color: #fff;
 }
@@ -61,7 +109,7 @@ h2 {
     color: #1abc9c;
 }
 
-.post {
+.body, .post {
     margin-bottom: 2em;
     font-size: 1.5em;
 }
@@ -92,9 +140,25 @@ blockquote {
         width: 100%;
         position: relative;
         margin: 0;
-        background: #2c3e50;
-        padding-top: 2em;
-    }    
+        padding-top: 0;
+    }
+    .sidebar .current {
+      transform: none;
+      display: inline-block;
+    }
+    .sidebar .previous {
+      width: 200px;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 3em;
+      color: #333;
+      margin: 50px 0px;
+      line-height: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
     
     #container {
         padding: 0;

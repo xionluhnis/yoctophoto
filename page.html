@@ -21,7 +21,7 @@
           <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
           <script type="text/javascript" src="{{ theme_url }}/javascripts/vendor/respond.min.js"></script>
         </head>
-        <body class="index">
+        <body class="page">
           <div id="container" class="pure-g-r">
 
             <div class="sidebar pure-u">
@@ -49,14 +49,11 @@
                     {% if meta.date %}
                     <p class="meta">Published {{ meta.date_formatted }}</p>
                     {% endif %}
-                    {% spaceless %}{{ content }}{% endspaceless %}
                   </div>
                 </div>
-                {% for section_name, section_pages in sections %}
-                {% for page in section_pages %}
-                <a class="section {{ section_name }}" href="{{ page.url }}" title="{{ page.description }}">{{ page.title }}</a>
-                {% endfor %}
-                {% endfor %}
+                <div class="body">
+                    {% spaceless %}{{ content }}{% endspaceless %}
+                </div>
               </div>
             </div>
           </div>
