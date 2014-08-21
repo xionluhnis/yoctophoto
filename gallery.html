@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if IE 7]>         <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+    <!--[if IE 8]>         <html class="lt-ie9" lang="en"> <![endif]-->
+      <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>{% if not(is_front_page) %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+          {% if meta.description %}
+          <meta name="description" content="{{ meta.description }}">
+          {% endif %}
+          {% if meta.robots %}
+          <meta name="robots" content="{{ meta.robots }}">
+          {% endif %}
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="icon" href="{{ theme_url }}/favicon.ico" type="image/x-icon" />
+          <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
+          <link rel="stylesheet" href="{{ theme_url }}/styles/main.css">
+          <link rel="stylesheet" href="{{ theme_url }}/styles/navigataur.css">
+          <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+          <script type="text/javascript" src="{{ theme_url }}/zigfy/js/jquery.js"></script>
+          <script type="text/javascript" src="{{ theme_url }}/zigfy/js/jquery.zigfy.js"></script>
+          <script type="text/javascript" src="{{ theme_url }}/javascripts/vendor/respond.min.js"></script>
+          <link rel="stylesheet" href="{{ theme_url }}/css/zigfy.css" type="text/css" media="all">
+        </head>
+        <body class="gallery">
+          <div id="container" class="pure-g-r">
+
+            <div class="sidebar pure-u">
+              {% if not(current_page.url == base_url ~ '/') %}
+              <a href="{{ parent_url }}" class="previous">
+                <!-- <img src="{{ theme_url }}/images/logo.png" alt="{{ site_title }}" /> -->
+              </a>
+              {% endif %}
+              <a href="{{ current_page.url }}" class="current">{% if meta.title %}{{ meta.title }}{% else %}{{ meta.url | shorturl }}{% endif %}</a>
+            </div>
+            <div class="pure-u-1">
+              <div id="content">
+                <div class="post">
+                  {% if meta.date %}
+                  <p class="meta">Published {{ meta.date_formatted }}</p>
+                  {% endif %}
+                  {% spaceless %}{{ content }}{% endspaceless %}
+                </div>
+                <div class="zigfy">
+                {% for file in medias if file.is_image %}
+                <img src="{{ file.url }}" />
+                {% endfor %}
+              </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
