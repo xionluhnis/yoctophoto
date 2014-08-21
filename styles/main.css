@@ -110,7 +110,7 @@ body.gallery .thumbnails img {
 body.gallery #gallery {
   display: none;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -118,13 +118,14 @@ body.gallery #gallery {
   background: rgba(0, 0, 0, 0.9);
 }
 body.gallery #gallery:after {
-  content: "Click background to exit";
-  color: #333;
+  content: "<F> layout, <Click> exit";
+  color: #222;
   font-size: 2em;
-  text-shadow: 1px 1px 15px #333;
-  position: absolute;
+  text-shadow: 1px 1px 5px #000;
+  position: fixed;
   top: 20px;
   left: 20px;
+  cursor: pointer;
 }
 
 .pure-menu-custom ul {
