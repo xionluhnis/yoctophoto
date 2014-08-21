@@ -22,11 +22,10 @@
           <script type="text/javascript" src="{{ theme_url }}/zigfy/js/jquery.js"></script>
           <script type="text/javascript" src="{{ theme_url }}/zigfy/js/jquery.zigfy.js"></script>
           <script type="text/javascript" src="{{ theme_url }}/javascripts/vendor/respond.min.js"></script>
-          <link rel="stylesheet" href="{{ theme_url }}/css/zigfy.css" type="text/css" media="all">
+          <link rel="stylesheet" href="{{ theme_url }}/zigfy/css/zigfy.css" type="text/css" media="all">
         </head>
         <body class="gallery">
           <div id="container" class="pure-g-r">
-
             <div class="sidebar pure-u">
               {% if not(current_page.url == base_url ~ '/') %}
               <a href="{{ parent_url }}" class="previous">
@@ -43,13 +42,59 @@
                   {% endif %}
                   {% spaceless %}{{ content }}{% endspaceless %}
                 </div>
-                <div class="zigfy">
-                {% for file in medias if file.is_image %}
-                <img src="{{ file.url }}" />
-                {% endfor %}
-              </div>
+                <div class="thumbnails">
+                  {% for file in medias if file.is_image %}
+                  <img src="{{ file.thumbnail.url }}" data-url="{{ image.url }}" data-index="{{ loop.index0 }}" />
+                  {% endfor %}
+                </div>
               </div>
             </div>
           </div>
+          <!-- full screen gallery -->
+          <div id="gallery" class="zigfy full" data-zigfy-resize="true" data-zigfy-layout="full" data-zigfy-align="center" data-zigfy-padding="50">
+            <div class="nav full"></div>
+            <div class="exit"></div>
+            {% for file in medias if file.is_image %}
+            <img src="{{ file.url }}" width="{{ file.width }}" height="{{ file.height }}" />
+            {% endfor %}
+          </div>
+          <script type="text/javascript">
+            $(function(){
+              $('#content .thumbnails img').click(function(){
+                var index = $(this).data('index') || 0;
+                $('#gallery').zigfy('select', index).fadeIn();
+                });
+              $('#gallery .nav.full').click(function(){
+                var layout = $(this).hasClass('full') ? 'maximize' : 'full';
+                $('#gallery').zigfy('switchLayout', layout);
+                $(this).removeClass('full', 'maximize').addClass(layout);
+                });
+              $('#gallery').click(function(event){
+                if(!$(event.target).hasClass('zigfy')){
+                  return false;
+                }
+                $('#gallery').fadeOut();
+                });
+              $(window).keypress(function(event){
+                var $gal = $('#gallery');
+                if($gal.is(':visible')){
+                  switch(event.keyCode || event.which){
+                    case 102: // f
+                    case 70: // F
+                      var layout = $gal.hasClass('full') ? 'maximize' : 'full';
+                      $gal.zigfy('switchLayout', layout);
+                      $gal.removeClass('full', 'maximize').addClass(layout);
+                      break;
+                    case 39: // right
+                      $gal.zigfy('next');
+                      break;
+                    case 37: // left
+                      $gal.zigfy('prev');
+                      break;
+                  }
+                }
+              });
+            });
+          </script>
         </body>
       </html>
