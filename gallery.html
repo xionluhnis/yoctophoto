@@ -55,7 +55,7 @@
             <div class="nav full"></div>
             <div class="exit"></div>
             {% for file in medias if file.is_image %}
-            <img src="{{ file.url }}" width="{{ file.width }}" height="{{ file.height }}" />
+            <img src="{{ file.medium.url }}" width="{{ file.medium.width }}" height="{{ file.medium.height }}" data-full-src="{{ file.url }} data-full-width="{{ file.width }}" data-full-height="{{ file.height }}" />
             {% endfor %}
           </div>
           <script type="text/javascript">
