@@ -9,6 +9,15 @@ body {
     box-shadow: 0 0 25px white;
 }
 
+::-moz-selection {
+  color: white;
+  background: black;
+}
+::selection {
+  color: white;
+  background: black;
+}
+
 body.index, body.page {
     padding-bottom: 50px;
 }
@@ -33,31 +42,39 @@ h2 {
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 16em;
-    margin-left: -16em;
+    width: 256px;
+    margin-left: -256px;
     color: #fff;
-    padding-top: 5em;
+    padding-top: 100px;
     text-align: center;
     background: black; /* #2c3e50; */
     box-shadow: 0 0 5px black;
 }
-
+.sidebar .rotbox {
+  transform: rotate(-90deg);
+  transform-origin: 256px bottom;
+  height: 256px;
+  width: auto;
+  margin: -256px 0 0;
+  text-align: right;
+}
 .sidebar .previous {
   display: block;
-  height: 100px;
-  margin-top: -5em;
+  height: 80px;
+  margin: -80px 0 0;
   background: url(../images/back.png) no-repeat 50% 50%;
 }
-
 .sidebar .current {
   display: block;
-  transform: rotate(270deg);
   font-weight: bold;
   font-size: 3em;
-  margin: 50px 0px;
-  line-height: 1.5em;
+  line-height: 256px;
   color: #333;
   text-shadow: 0px 0px 5px #222;
+  white-space: nowrap;
+  text-align: right;
+  float: right;
+  margin-right: 50px;
 }
 .sidebar .current:hover {
   text-shadow: 0px 0px 25px #333;

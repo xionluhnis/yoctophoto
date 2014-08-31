@@ -32,7 +32,9 @@
                 <!-- <img src="{{ theme_url }}/images/logo.png" alt="{{ site_title }}" /> -->
               </a>
               {% endif %}
-              <a href="{{ current_page.url }}" class="current">{% if meta.title %}{{ meta.title }}{% else %}{{ meta.url | shorturl }}{% endif %}</a>
+              <div class="rotbox">
+                <a href="{{ current_page.url }}" class="current">{% if meta.title %}{{ meta.title }}{% else %}{{ meta.url | shorturl }}{% endif %}</a>
+              </div>
             </div>
             <div class="pure-u-1">
               <div id="content">
