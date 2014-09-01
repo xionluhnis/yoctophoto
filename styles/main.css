@@ -200,19 +200,26 @@ blockquote {
     .sidebar .current {
       transform: none;
       display: inline-block;
+      line-height: 3em;
     }
     .sidebar .previous {
       width: 200px;
-      display: inline-block;
-      font-weight: bold;
-      font-size: 3em;
       color: #333;
-      margin: 50px 0px;
-      line-height: 1.5em;
-      height: 1.5em;
+      margin: 0;
+      line-height: 3em;
+      height: 3em;
       position: absolute;
       left: 0px;
       top: 0px;
+      font-size: 3em;
+    }
+    .sidebar .rotbox {
+      transform: none;
+      height: 3em;
+      width: auto;
+      position: inline-block;
+      margin: 0;
+      text-align: right;
     }
     
     #container {
