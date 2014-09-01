@@ -123,6 +123,8 @@ body.gallery .thumbnails img {
   box-shadow: 3px 3px 5px #aaa;
   margin: 10px;
   cursor: pointer;
+  width: 80px;
+  height: 80px;
 }
 body.gallery #gallery {
   display: none;
